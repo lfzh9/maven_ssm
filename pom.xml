@@ -13,7 +13,7 @@
 	<!-- FIXME change it to the project's website -->
 	<url>http://www.example.com</url>
 
-		<!-- 设置字符编码和 java版本 -->
+	<!-- 设置字符编码和 java版本 -->
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>1.8</maven.compiler.source>
@@ -224,13 +224,28 @@
 			<version>3.2.3</version>
 		</dependency>
 
+		<!-- 验证 -->
+		<!-- https://mvnrepository.com/artifact/javax.validation/validation-api -->
+		<dependency>
+			<groupId>javax.validation</groupId>
+			<artifactId>validation-api</artifactId>
+			<version>1.1.0.Final</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-validator -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>5.1.0.Final</version>
+		</dependency>
+
 	</dependencies>
+
 
 	<build>
 		<!-- 和项目名一致 -->
 		<finalName>maven_ssm</finalName>
-		<!-- maven打包(war)或(jar) 时  ,只会找resources下的xml,我们mybatis的xml一般在mapper中,这样就会导致不能被打包进入 -->
-		
+		<!-- maven打包(war)或(jar) 时 ,只会找resources下的xml,我们mybatis的xml一般在mapper中,这样就会导致不能被打包进入 -->
+
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -245,53 +260,53 @@
 			</plugin>
 			<!-- 配置tomcat -->
 			<plugin>
-					<groupId>org.apache.tomcat.maven</groupId>
-					<artifactId>tomcat7-maven-plugin</artifactId>
-					<version>2.2</version>
-					<configuration>
-							<port>8080</port>
-							<!-- 找到finalName 也就是maven_ssm -->
-							<path>/${project.build.finalName}</path>
-							<!-- maven 配置中server标签的id -->
-							<server>mytomcat</server>
-							<!-- 本地的tomcat,如果是远程就把IP换了就行 -->
-							<url>http://localhost:8080/manager/text</url>
-					</configuration>
-					<executions>
-							<execution>
-							<!-- 打包 -->
-								<phase>package</phase>
-								<goals>
-								<!-- 运行 -->
-									<goal>run</goal>
-								</goals>
-							</execution>
-					</executions>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<version>2.2</version>
+				<configuration>
+					<port>8080</port>
+					<!-- 找到finalName 也就是maven_ssm -->
+					<path>/${project.build.finalName}</path>
+					<!-- maven 配置中server标签的id -->
+					<server>mytomcat</server>
+					<!-- 本地的tomcat,如果是远程就把IP换了就行 -->
+					<url>http://localhost:8080/manager/text</url>
+				</configuration>
+				<executions>
+					<execution>
+						<!-- 打包 -->
+						<phase>package</phase>
+						<goals>
+							<!-- 运行 -->
+							<goal>run</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 		<!-- 设置文件打包 -->
 		<resources>
 			<resource>
-					<directory>src/main/resources</directory>
-					<includes>
-							<include>**/*.properties</include>
-							<include>**/*.xml</include>
-							<include>**/*.tld</include>
-					</includes>
-					<filtering>false</filtering>
+				<directory>src/main/resources</directory>
+				<includes>
+					<include>**/*.properties</include>
+					<include>**/*.xml</include>
+					<include>**/*.tld</include>
+				</includes>
+				<filtering>false</filtering>
 			</resource>
-			
-				<resource>
-					<directory>src/main/java</directory>
-					<includes>
-							<include>**/*.properties</include>
-							<include>**/*.xml</include>
-							<include>**/*.tld</include>
-					</includes>
-					<filtering>false</filtering>
+
+			<resource>
+				<directory>src/main/java</directory>
+				<includes>
+					<include>**/*.properties</include>
+					<include>**/*.xml</include>
+					<include>**/*.tld</include>
+				</includes>
+				<filtering>false</filtering>
 			</resource>
 		</resources>
 	</build>
-	
-	
+
+
 </project>

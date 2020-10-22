@@ -10,6 +10,7 @@
 	</typeAliases>
 	<!-- 映射文件,如果我们是XML方式的话,最终操作数据库的SQL会单独封装到XML文件中, 这个时候 就需要通过这里来找到对应的XML文件 -->
 	<mappers>
-		<mapper resource="lfzh/mapper/Branch.xml" />
+		<mapper resource="lfzh/mapper/User.xml" />
+		<mapper resource="lfzh/mapper/Dept.xml" />
 	</mappers>
 </configuration>

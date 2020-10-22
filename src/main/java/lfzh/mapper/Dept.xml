@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="lfzh.dao.IDeptDao">
+	<select id="loadByname" parameterType="java.lang.String"
+		resultType="Dept">
+		select * from t_dept where name = #{name}
+	</select>
+
+	<select id="list" resultType="Dept">
+		select * from t_dept order by id asc
+	</select>
+
+	<insert id="add" parameterType="User">
+		insert into
+		t_user(name,`desc`) values(#{name},#{desc});
+	</insert>
+
+	<delete id="delete" parameterType="int">
+		delete from t_dept where
+		id=#{id}
+	</delete>
+
+	<update id="update" parameterType="Dept">
+		update t_dept set
+		name=#{name},`desc`=#{desc}, where id = #{id}
+	</update>
+
+	<select id="loadById" parameterType="int" resultType="Dept">
+		select *
+		from t_dept where id = #{id}
+	</select>
+</mapper>
